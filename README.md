@@ -2,7 +2,7 @@
 
 Manifest Job is an automated job scraping and matching system that helps candidates find relevant job opportunities. It scrapes job listings from multiple sources, analyzes them against your resume, and sends notifications for relevant matches.
 
-May this tool help us manifest our dream job in this rough times.
+> May this tool help us manifest our dream job in this rough times.
 
 ## Features
 
@@ -156,7 +156,7 @@ The matching logic is implemented using templates in the `templates/` directory.
 ## Contributors
 
 - **DrC0ns0le** ([@DrC0ns0le](https://github.com/DrC0ns0le)) - Project creator and lead developer
-- **Rowen** ([@RowenTey](https://github.com/RowenTey)) - Lead developer
+- **Rowen** ([@RowenTey](https://github.com/RowenTey)) - Contributor
 
 ## Contributing
 

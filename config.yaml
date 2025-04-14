@@ -1,0 +1,267 @@
+# Job Scraper Configuration
+job_scraper:
+  # Database configuration
+  database:
+    # Path to the CSV file for storing job data
+    csv_path: "jobs_database.csv"
+
+    # Remove job postings older than this many days
+    cleanup_days: 7
+
+  # Multiple scraper configurations as a single list
+  scrapers:
+    # Scraper 1: Backend engineers in Singapore
+    - name: "linkedin_backend_sg"
+      site_name: linkedin
+      search_term: "backend engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      linkedin_fetch_description: true
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 2: DevOps engineers in Singapore
+    - name: "linkedin_devops_sg"
+      site_name: linkedin
+      search_term: "devops engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      linkedin_fetch_description: true
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 3: Site Reliability Engineers in Singapore
+    - name: "linkedin_sre_sg"
+      site_name: linkedin
+      search_term: "site reliability engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      linkedin_fetch_description: true
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 4: Golang roles in Singapore
+    - name: "linkedin_golang_sg"
+      site_name: linkedin
+      search_term: "golang"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      linkedin_fetch_description: true
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 5: Indeed for backend engineers in Singapore
+    - name: "indeed_backend_sg"
+      site_name: indeed
+      search_term: "backend engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      country_indeed: "Singapore"
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 6: Indeed for devops engineers in Singapore
+    - name: "indeed_devops_sg"
+      site_name: indeed
+      search_term: "devops engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      country_indeed: "Singapore"
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 7: Indeed for site reliability engineers in Singapore
+    - name: "indeed_sre_sg"
+      site_name: indeed
+      search_term: "site reliability engineer"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      country_indeed: "Singapore"
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+    # Scraper 8: Indeed for golang engineers in Singapore
+    - name: "indeed_golang_sg"
+      site_name: indeed
+      search_term: "golang"
+      location: "Singapore"
+      results_wanted: 50
+      hours_wanted: 2
+      country_indeed: "Singapore"
+      proxies:
+        [
+          "10.3.1.25:8118",
+          "10.3.1.25:8119",
+          "10.3.1.25:8120",
+          "10.3.1.25:8121",
+          "10.3.1.25:8122",
+          "10.3.1.25:8123",
+          "10.3.1.25:8124",
+          "10.3.1.25:8125",
+          "10.3.1.25:8126",
+          "10.3.1.25:8127",
+          "10.3.1.25:8128",
+        ]
+
+  scraper_config:
+    # Run all scrapers in parallel
+    parallel: true
+
+    # Maximum number of scrapers to run in parallel, ignored if parallel is false
+    max_workers: 3
+
+    # Maximum number of retries for each scraper
+    max_retries: 3
+
+    # Delay between retries in seconds
+    retry_delay: 15
+
+    # Run interval in seconds
+    run_interval: 3600
+
+    # Blocked period where scrapers will not run, in HHMM-HHMM start-end 24-hour format
+    blocked_period: 2200-0800
+
+    # Job title blackisted keywords
+    title_blacklisted_keywords:
+      - "intern"
+      - "internship"
+      - "technician"
+
+# Match Analysis Configuration
+match_analysis:
+  # Ollama configuration
+  ollama:
+    # Model name
+    model: "hf.co/stduhpf/google-gemma-3-12b-it-qat-q4_0-gguf-small"
+
+    # Endpoint for model inference
+    # endpoint: 'http://localhost:11434'
+
+    # Generation parameters
+    temperature: 1.0
+    top_p: 0.95
+    top_k: 64
+
+    # Timeout in seconds for API calls
+    timeout_seconds: 180
+
+  # Resume configuration
+  resume_path: "resume.md"
+
+  # Optional: Additional user prompt for filtering jobs based on criteria, preference, etc. Configured as a markdown file
+  preference_prompt_path: "preference.md"
+
+  # Number of workers
+  worker_count: 1
+
+  # Maximum number of retries
+  max_retries: 3
+
+  # Delay between retries in seconds
+  retry_delay: 5
+
+push_notification:
+  # Telegram configuration
+  # telegram:
+  #   # Bot token
+  #   token: 'YOUR_BOT_TOKEN'
+
+  #   # Chat ID
+  #   chat_id: 'YOUR_CHAT_ID'
+
+  # Mattermost configuration
+  # mattermost:
+  # Webhook
+  # webhook_url: 'https://example.com/webhook'

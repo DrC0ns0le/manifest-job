@@ -1,0 +1,53 @@
+# Exclude templates directory and config files (will be mounted as volumes)
+templates/
+config.yaml
+resume.md
+
+# Database
+jobs_database.csv
+
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.env/
+.venv/
+ENV/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+job_scraper.log
+
+# Other
+.DS_Store
+experimental/

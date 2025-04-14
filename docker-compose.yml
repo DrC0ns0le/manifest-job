@@ -1,0 +1,18 @@
+services:
+  job-scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: job-scraper
+    volumes:
+      - ./templates:/app/templates
+      - ./config.yaml:/app/config.yaml
+      - ./resume.md:/app/resume.md
+      - ./jobs_database.csv:/app/jobs_database.csv
+      - ./job_scraper.log:/app/job_scraper.log
+    environment:
+      - TZ=Asia/Singapore
+    env_file: ".env"
+    restart: unless-stopped
+    # Uncomment the following to run with a specific configuration file
+    # command: --config /app/config.yaml

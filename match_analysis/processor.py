@@ -19,7 +19,10 @@ from model.job_listing import JobListing
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    filename="job_scraper.log",
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger("job_processor")
 
@@ -60,6 +63,8 @@ class JobMatchProcessor:
         self.api_timeout = self.config.get("timeout_seconds", 60)
         self.max_retries = self.config.get("max_retries", 3)
         self.retry_delay = self.config.get("retry_delay", 5)
+
+        self.rejection_threshold = self.config.get("rejection_threshold", 2)
 
         if self.worker_count < 1:
             raise ValueError("Processor count must be at least 1")
@@ -102,6 +107,8 @@ class JobMatchProcessor:
                     job_requirements=ans["analysis"]["role_requirements"],
                     brief_description=ans["analysis"]["role_summary"],
                     match_justification=justification,
+                    rejected=self._rating_to_score(ans["overall_match"]["rating"])
+                    <= self.rejection_threshold,
                 )
 
                 # Send notification
@@ -145,7 +152,8 @@ class JobMatchProcessor:
                     # Recoverable error, put job back on queue
                     logger.error("Error processing job: %s", e)
                     logger.info("Adding job back to queue: %s", e)
-                    await self.job_queue.put(job)
+                    # TODO: Can't use async put due to different event loop
+                    self.job_queue.put_sync(job)
                 finally:
                     # Mark the job as done
                     self.job_queue.queue.task_done()
@@ -243,6 +251,28 @@ class JobMatchProcessor:
             str: Justification
         """
         return f"Match: {ans['overall_match']['rating']} - {ans['overall_match']['score']}\n{ans['overall_match']['summary']}"
+
+    def _rating_to_score(self, rating: str) -> int:
+        """
+        Convert a rating to a score
+
+        Args:
+            rating: The rating to convert
+
+        Returns:
+            int: The score corresponding to the rating
+        """
+        return {
+            "UNLIKELY": 1,
+            "MARGINAL": 2,
+            "COMPETITIVE": 3,
+            "STRONG": 4,
+            "EXECELLENT": 5,
+            "POOR": 0,
+            "MEDIOCRE": 2,
+            "DECENT": 3,
+            "GOOD": 4,
+        }.get(rating.upper(), 0)
 
 
 if __name__ == "__main__":

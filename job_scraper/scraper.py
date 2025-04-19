@@ -7,7 +7,10 @@ from match_analysis.queue import JobQueue
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    filename="job_scraper.log",
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 
 
@@ -107,7 +110,7 @@ class JobScraper:
     def filter_jobs(self, jobs_df):
         """Filter jobs based on configuration"""
         filters = set(
-            self.scrape_config.get("scraper_config", {}).get(
+            self.scrape_config.get("global_scraper_config", {}).get(
                 "title_blacklisted_keywords", []
             )
         )
@@ -193,7 +196,7 @@ class JobScraper:
 
             jobs_df = self.scrape_jobs()
             filtered_jobs_df = self.filter_jobs(jobs_df)
-            new_jobs = self.update_database(jobs_df)
+            new_jobs = self.update_database(filtered_jobs_df)
 
             self.send_to_queue(new_jobs)
             self.logger.info(f"Completed job scraper {self.name}")

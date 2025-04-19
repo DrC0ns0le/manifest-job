@@ -147,10 +147,12 @@ The matching logic is implemented using templates in the `templates/` directory.
 - **push_notification**: Sends notifications for matching jobs
 - **configuration**: Manages application configuration
 
-## Upcoming Features
+## Upcoming Features/To-Do
 
 - **OpenAI Integration**: Support for OpenAI and other LLM providers beyond Ollama
 - **Notification Filtering**: Customizable filtering system to control which jobs trigger notifications based on match quality, salary range, and other criteria
+- **Better Logging**: More detailed logging and error handling
+- **Persistent Job Queue**: Persist jobs in queue in event of early termination
 - More to come!
 
 ## Contributors

@@ -30,6 +30,8 @@ class MattermostManager(NotificationProvider):
 
         self.webhook_url = webhook_url
         self.username = username
+        self.channel = config.get("channel", None)
+        self.rejection_channel = config.get("rejection_channel", None)
 
     def _generate_message(self, job: JobListing):
         """
@@ -76,6 +78,12 @@ class MattermostManager(NotificationProvider):
             "username": job.company,
             "icon_url": job.company_logo_url,
         }
+
+        if self.channel:
+            payload["channel"] = self.channel
+
+        if self.rejection_channel and job.rejected:
+            payload["channel"] = self.rejection_channel
 
         return payload, text
 

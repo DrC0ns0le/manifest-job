@@ -9,7 +9,6 @@ import time as time_module
 from configuration import ConfigManager
 
 from job_scraper.producer_manager import ProducerManager
-from job_scraper.analyser import JobAnalyzer
 
 from match_analysis.processor import JobMatchProcessor
 
@@ -49,9 +48,6 @@ class JobSystem:
             self.config["job_scraper"], self.job_processor.get_queue()
         )
 
-        # Initialize the analyzer
-        self.analyzer = JobAnalyzer(self.config["job_scraper"])
-
         logger.info("Job system initialized")
 
         self.shutdown_requested = False
@@ -88,11 +84,6 @@ class JobSystem:
         """Stop the job consumer"""
         logger.info("Stopping consumer")
         self.job_processor.stop()
-
-    def analyze_jobs(self):
-        """Run job analysis"""
-        logger.info("Running job analysis")
-        self.analyzer.analyze()
 
     def run(self):
         """

@@ -11,7 +11,10 @@ from match_analysis.queue import JobQueue
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    filename="job_scraper.log",
+    filemode="a",
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger("producer_manager")
 
@@ -46,7 +49,13 @@ class ProducerManager:
         # Initialize scrapers for each configuration in the list
         for scraper_config in config["scrapers"]:
             # Create a copy of scraper config with database info
-            complete_config = {"scraping": scraper_config, "database": db_config}
+            complete_config = {
+                "scraping": scraper_config,
+                "database": db_config,
+            }
+
+            if "scraper_config" in config:
+                complete_config["global_scraper_config"] = config["scraper_config"]
 
             # Get name from config or use a default
             name = scraper_config.get("name", f"scraper_{len(self.scrapers)+1}")
@@ -73,7 +82,9 @@ class ProducerManager:
         Uses ThreadPoolExecutor from concurrent.futures to run scrapers in parallel
         Threading is used to run each scraper in a separate thread, asyncio is not possible due to jobspy
         """
-        max_workers = self.config.get("max_workers", len(self.scrapers))
+        max_workers = self.config.get("scraper_config", {}).get(
+            "max_workers", len(self.scrapers)
+        )
         logger.info(f"Running scrapers in parallel with {max_workers} workers")
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:

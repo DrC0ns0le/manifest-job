@@ -83,7 +83,7 @@ class Ollama:
                 "top_k": self.top_k,
                 "top_p": self.top_p,
                 "num_predict": 8192,
-                "num_ctx": 6144,
+                "num_ctx": 8192,
             },
             "format": "json",
         }

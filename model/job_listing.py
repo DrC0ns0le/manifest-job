@@ -10,4 +10,5 @@ class JobListing(BaseModel):
     job_requirements: str
     brief_description: str
     match_justification: str
+    rejected: bool
     job_posting_url: str

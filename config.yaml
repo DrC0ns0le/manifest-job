@@ -16,7 +16,7 @@ job_scraper:
       search_term: "backend engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       linkedin_fetch_description: true
       proxies:
         [
@@ -39,7 +39,7 @@ job_scraper:
       search_term: "devops engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       linkedin_fetch_description: true
       proxies:
         [
@@ -62,7 +62,7 @@ job_scraper:
       search_term: "site reliability engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       linkedin_fetch_description: true
       proxies:
         [
@@ -85,7 +85,7 @@ job_scraper:
       search_term: "golang"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       linkedin_fetch_description: true
       proxies:
         [
@@ -108,7 +108,7 @@ job_scraper:
       search_term: "backend engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       country_indeed: "Singapore"
       proxies:
         [
@@ -131,7 +131,7 @@ job_scraper:
       search_term: "devops engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       country_indeed: "Singapore"
       proxies:
         [
@@ -154,7 +154,7 @@ job_scraper:
       search_term: "site reliability engineer"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       country_indeed: "Singapore"
       proxies:
         [
@@ -177,7 +177,7 @@ job_scraper:
       search_term: "golang"
       location: "Singapore"
       results_wanted: 50
-      hours_wanted: 2
+      hours_wanted: 12
       country_indeed: "Singapore"
       proxies:
         [
@@ -211,7 +211,7 @@ job_scraper:
     run_interval: 3600
 
     # Blocked period where scrapers will not run, in HHMM-HHMM start-end 24-hour format
-    blocked_period: 2200-0800
+    # blocked_period: 2200-0800
 
     # Job title blackisted keywords
     title_blacklisted_keywords:
@@ -247,10 +247,10 @@ match_analysis:
   worker_count: 1
 
   # Maximum number of retries
-  max_retries: 3
+  max_retries: 5
 
   # Delay between retries in seconds
-  retry_delay: 5
+  retry_delay: 3
 
 push_notification:
   # Telegram configuration
@@ -264,4 +264,10 @@ push_notification:
   # Mattermost configuration
   # mattermost:
   # Webhook
-  # webhook_url: 'https://example.com/webhook'
+  # webhook_url: "https://example.com/webhook"
+
+  # Channel, if not specified, Mattermost will default to channel the webhook is configured with
+  # channel: "manifest-job"
+
+  # Rejection channel, if specified, jobs failing to meet minimum match threshold will be sent to this channel
+  # rejection_channel: "manifest-jobs-rejections"

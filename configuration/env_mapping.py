@@ -7,6 +7,8 @@ ENV_MAPPING = {
     "PUSH_NOTIFICATION_TELEGRAM_TOKEN": "push_notification.telegram.token",
     "PUSH_NOTIFICATION_TELEGRAM_CHAT_ID": "push_notification.telegram.chat_id",
     "PUSH_NOTIFICATION_MATTERMOST_WEBHOOK_URL": "push_notification.mattermost.webhook_url",
+    "PUSH_NOTIFICATION_MATTERMOST_CHANNEL": "push_notification.mattermost.channel",
+    "PUSH_NOTIFICATION_MATTERMOST_REJECTION_CHANNEL": "push_notification.mattermost.rejection_channel",
     "JOB_SCRAPER_RUN_INTERVAL": "job_scraper.scraper_config.run_interval",
     "JOB_SCRAPER_PARALLEL": "job_scraper.scraper_config.parallel",
     "MATCH_ANALYSIS_OLLAMA_MODEL": "match_analysis.ollama.model",
